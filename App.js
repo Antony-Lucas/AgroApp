@@ -2,10 +2,16 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Tasks from './src/pages/Tasks/';
-import Bezerros from './src/pages/Bezerros/';
 import ProfileBezerros from './src/pages/Tabs/PerfilBezerros/';
+import ProfileVacas from './src/pages/Tabs/perfilVacas/';
+import ProfileVaqueiros from './src/pages/Tabs/perfilVaqueiro';
 import DrawerButton from './src/pages/Menu/DrawerButton';
+import gerVaqueiros from './src/pages/Tabs/gerVaqueiro/';
+import FreqVaqueiros from './src/pages/Tabs/freqVaqueio/';
 import Details from './src/pages/Details/';
+import Modal from './src/pages/Tabs/gerVaqueiro/modal/';
+import ModalBovinos from './src/pages/Tabs/bovinos/modal/';
+import ModalVaqueiros from './src/pages/Tabs/perfilVaqueiro/modal/'
 
 const Stack = createStackNavigator();
 
@@ -38,18 +44,6 @@ export default function App() {
         />
 
         <Stack.Screen
-          name="Bezerros"
-          component={Bezerros}
-          options={{
-            title: false,
-            headerTintColor:"#bdb2ff",
-            headerTransparent: true,
-            headerShown: true
-          }}
-          
-        />
-
-        <Stack.Screen
           name="ProfileBezerros"
           component={ProfileBezerros}
           options={{
@@ -57,8 +51,85 @@ export default function App() {
             headerTintColor:"#fff",
             headerTransparent: true,
             headerShown: true
+            
           }}
           
+        />
+
+        <Stack.Screen
+          name="ProfileVacas"
+          component={ProfileVacas}
+          options={{
+            title: false,
+            headerTintColor: "#fff",
+            headerTransparent: true
+          }}
+        />
+
+        <Stack.Screen
+          name="ProfileVaqueiros"
+          component={ProfileVaqueiros}
+          options={{
+            title: false,
+            headerTintColor: "#6c757d",
+            headerTransparent: true
+          }}
+        />
+
+        <Stack.Screen
+          name="gerVaqueiro"
+          component={gerVaqueiros}
+          options={{
+            title: false,
+            headerTintColor: "#6c757d",
+            headerTransparent: true,
+          }}
+        />
+
+        <Stack.Screen
+          name="FreqVaqueiros"
+          component={FreqVaqueiros}
+          options={{
+            title: false,
+            headerTintColor: "#a0c4ff",
+            headerTransparent: true
+          }}
+        />
+
+        <Stack.Screen
+          name="Modal"
+          component={Modal}
+          options={{
+            title: false,
+            headerTintColor: "#fff",
+            headerTransparent: true,
+            presentation: 'transparentModal',
+            cardOverlayEnabled: true
+          }}
+        />
+
+        <Stack.Screen
+          name="ModalBovinos"
+          component={ModalBovinos}
+          options={{
+            title: false,
+            headerTintColor: "#fff",
+            headerTransparent: true,
+            presentation: 'transparentModal',
+            cardOverlayEnabled: true
+          }}
+        />
+
+        <Stack.Screen
+          name="ModalVaqueiros"
+          component={ModalVaqueiros}
+          options={{
+            title: false,
+            headerTintColor: "#fff",
+            headerTransparent: true,
+            presentation: 'transparentModal',
+            cardOverlayEnabled: true
+          }}
         />
 
         <Stack.Screen

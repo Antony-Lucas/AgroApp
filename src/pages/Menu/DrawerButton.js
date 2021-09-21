@@ -1,9 +1,10 @@
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 import Casinha from '../Tasks/';
 import Bovinos from '../Tabs/bovinos/';
-import Leite from '../Leite/';
+import Vacinas from '../Vacinas/';
 import Vaqueiro from '../Vaqueiro/';
 import Controle from '../Controle/';
 
@@ -12,7 +13,7 @@ const Tab = createMaterialBottomTabNavigator();
 function DrawerButton(){
     return(
         <Tab.Navigator 
-            initialRouteName="Casinha  "
+            initialRouteName="Casinha"
             activeColor="#000"
             inactiveColor="rgba(0,0,0,0.3)"
             shifting={true}
@@ -42,21 +43,10 @@ function DrawerButton(){
             />
 
             <Tab.Screen
-                name="Leite"
-                component={Leite}
-                options={{
-                    tabBarLabel: 'Leite',
-                    tabBarIcon: ({ color }) => (
-                      <MaterialCommunityIcons name='pail-outline' color={color} size={25}/>
-                    )
-                  }}
-            />
-
-            <Tab.Screen
                 name="Vaqueiro"
                 component={Vaqueiro}
                 options={{
-                    tabBarLabel: 'Vaqueiro',
+                    tabBarLabel: 'Vaqueiros',
                     tabBarIcon: ({ color }) => (
                       <MaterialCommunityIcons name='account-cowboy-hat' color={color} size={25}/>
                     )
@@ -70,6 +60,17 @@ function DrawerButton(){
                     tabBarLabel: 'Controle',
                     tabBarIcon: ({ color }) => (
                       <MaterialCommunityIcons name='controller-classic-outline' color={color} size={25}/>
+                    )
+                  }}
+            />
+
+            <Tab.Screen
+                name="Vacinas"
+                component={Vacinas}
+                options={{
+                    tabBarLabel: 'Vacinas',
+                    tabBarIcon: ({ color }) => (
+                      <FontAwesome5 name='syringe' color={color} size={22}/>
                     )
                   }}
             />

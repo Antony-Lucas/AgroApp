@@ -4,13 +4,12 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         backgroundColor: "#a0c4ff",
-        
     },
 
     header:{
-        backgroundColor: "#fff",
+        backgroundColor: "#a0c4ff",
         padding: 30,
-        height: 100,
+        height: 120,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
@@ -29,53 +28,70 @@ const styles = StyleSheet.create({
     },
 
     resume_tasks:{ 
-        paddingBottom: 120,
-        width: "100%",
-        height: "98%",
-        backgroundColor: "#fff",
+        backgroundColor: "#f5f5f5",
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20, 
+        height: '100%',
+        flexGrow: 0
     },
 
-    blockShort:{
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        marginLeft: 25,
-        marginTop: 5
-    },
-
-    Tasks:{
-        marginTop: 10,
-        marginLeft: 30,
-        marginRight: -20,
-        backgroundColor: "#fff",
-        width: 150,
-        height: "80%",
-        borderRadius: 10,
-        display: "flex",
-        flexDirection: "column-reverse",
-        borderColor:"#a0c4ff",
-        borderWidth: 1
-    },
-
-    deleteTask:{
-        backgroundColor: "#a0c4ff",
-        height: 30,
+    charts:{
+        display: "flex", 
+        flexDirection: "column",
+        alignItems: "center",
         justifyContent: "center",
-        alignItems:"center",
-        borderRadius: 0,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10
+        width: "90%",
+        marginLeft: 15,
+        bottom: 35    
+    },
+
+    inCharts:{
+        display: 'flex', 
+        flexDirection: 'row', 
+        paddingHorizontal: 15,
+    },
+    
+    pizzaCharts:{
+        backgroundColor: "#fff",
+        display: 'flex',
+        justifyContent: "center",
+        alignItems: "center", 
+        marginTop: 10,
+        paddingHorizontal: 10,
+        width: "100%",
+        height: "40%",
+        borderRadius: 16,
+    },
+
+    buttonLink:{
+        backgroundColor: "#fff",
+        top: 10,
+        left: 90,
+        padding: 15,
+        borderRadius: 5,
+        display: "flex",
+        flexDirection: 'row',
+        alignItems: "center", 
+        justifyContent: "center",
+        elevation: 2
+    },
+
+    linkTo:{
+        fontSize: 12,
+        fontFamily: "VarelaRound_400Regular", 
+        color: "#6c757d"
     },
 
     block:{
-        marginTop: 5
+        bottom: 60,
+        height: "100%"
     },
 
     progressBar:{
         backgroundColor: "#fff",
         width: "75%",
         borderRadius: 5,
-        marginHorizontal: 70,
+        marginHorizontal: 58,
         marginTop: 5,
         marginBottom: 10,
         display: "flex",

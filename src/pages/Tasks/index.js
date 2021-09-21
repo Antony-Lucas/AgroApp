@@ -5,10 +5,11 @@ import styles from './style';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import Quit from '../quit/';
+import Chart from '../../components/main_chart/';
+import ChartOut from '../../components/main_chart_out/';
+import PizzaChartIn from '../../components/pizza_chart_in';
 import { VarelaRound_400Regular } from '@expo-google-fonts/varela-round';
-import { createDrawerNavigator,
-    DrawerItemList,
-} from '@react-navigation/drawer';
+import { createDrawerNavigator,DrawerItemList} from '@react-navigation/drawer';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text,
     View,
@@ -16,7 +17,8 @@ import { Text,
     TouchableOpacity,
     FlatList,
     StyleSheet,
-    Image
+    Image,
+    ScrollView
 } from 'react-native';
 
 const Drawer = createDrawerNavigator();
@@ -53,48 +55,39 @@ function Tasks({ navigation }){
                     <Text style={stylesFont.fontVUser}>Olá, Bom dia Usuário</Text>
                 </View>
             </View>
-                <View  style={styles.resume_tasks}>
-                    <View>
-                        <Text style={stylesFont.fontVtitle}>Recente</Text>
+            <ScrollView 
+                showsVerticalScrollIndicator={false} 
+                style={styles.resume_tasks} 
+                contentContainerStyle={{height: "150%"}}
+            >
+                <View>
+                    <Text style={stylesFont.fontVtitle}>Resumo da sua fazenda: </Text>
+                </View>
+                <View style={styles.charts}>
+                    <View style={styles.inCharts}>
+                        <Chart/>
+                        <ChartOut/>
                     </View>
-                    <FlatList
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                        data={task}
-                        style={styles.flatlist}
-                        renderItem={( { item } )=>{
-                            return(
-                            <View style={styles.Tasks}>
-                                {<TouchableOpacity 
-                                    style={styles.deleteTask}
-                                    onPress={() => navigation.navigate('Detalhes')} //deleteTask(item.id)
-                                    >
-                                    <FontAwesome
-                                        name="ellipsis-h"
-                                        size={20}
-                                        color="#fff"
-                                    />
-                                </TouchableOpacity>}
-                                <Text
-                                    numberOfLines={1}
-                                    style={stylesFont.descriptionTask}
-                                >
-                                    {item.description}
-                                    <Text>Movimentação Diária</Text>
-                                </Text>
-                            </View>
-                            )
-                        }}
-                    />
-
+                <View style={styles.pizzaCharts}>
+                    <PizzaChartIn/>
+                </View>
+                <TouchableOpacity style={styles.buttonLink}>
+                    <Text style={styles.linkTo}>Ir para Minha fazenda</Text>
+                <MaterialCommunityIcons
+                    name="chevron-right"
+                    size={15}
+                    color={"#6c757d"}
+                />
+                </TouchableOpacity>
+                </View>
                     <View>
                         <Text style={stylesFont.fontVtitle2}>Para Hoje</Text>
                     </View>
-
+                        
                     <View style={styles.block}>
                         <View style={styles.progressBar}>
                             <View style={styles.colorPercentage}><Text style={stylesFont.fontProgressp}>0%</Text></View>
-                            <Text style={stylesFont.fontProgress}>Tirar Leite</Text>
+                            <Text style={stylesFont.fontProgress}>Controle quinzenal de despesa da fazenda</Text>
                         </View>
 
                         <View style={styles.progressBar}>
@@ -104,15 +97,15 @@ function Tasks({ navigation }){
 
                         <View style={styles.progressBar}>
                             <View style={styles.colorPercentage}><Text style={stylesFont.fontProgressp}>0%</Text></View>
-                            <Text style={stylesFont.fontProgress}>Tirar Leite</Text>
+                            <Text style={stylesFont.fontProgress}>Pagar funcionários</Text>
                         </View>
 
                         <View style={styles.progressBar}>
                             <View style={styles.colorPercentage}><Text style={stylesFont.fontProgressp}>0%</Text></View>
-                            <Text style={stylesFont.fontProgress}>Verificar Entrada e saída de leite</Text>
-                    </View>
-                </View>  
-            </View>
+                            <Text style={stylesFont.fontProgress}>Gastos com medicamentos</Text>
+                        </View>
+                    </View>  
+            </ScrollView>
         </View>
     );
 }
@@ -123,20 +116,13 @@ export default function Home(){
                 initialRouteName="Home"
                 screenOptions={{
                     drawerStatusBarAnimation: 'slide',
-                    drawerIcon: ({focused, size}) => (
-                        <MaterialCommunityIcons 
-                           name="home"
-                           size={size}
-                           color={focused ? '#000' : '#ccc'}
-                        />
-                    ),
                     drawerStyle:{
                         width: 280,
                         backgroundColor: '#fff',
                     },
                     headerTransparent: true,
                     headerStyle:{
-                        height: 150
+                        height: 150,
                     },
                     drawerType:"front",
                 }}
@@ -144,13 +130,13 @@ export default function Home(){
                     return(
                         <SafeAreaView style={{ flex: 1 }}>
                             <View
-                            style={{
-                                height: 180,
-                                alignItems: "flex-start",
-                                justifyContent: "center",
-                                marginTop: 20,
-                                marginLeft: 20
-                            }}
+                                style={{
+                                    height: 180,
+                                    alignItems: "flex-start",
+                                    justifyContent: "center",
+                                    marginTop: 20,
+                                    marginLeft: 20
+                                }}
                             >
                                 <Image
                                     source={require("../../assets/user.png")}
@@ -207,27 +193,28 @@ const stylesFont = StyleSheet.create({
 
     fontVUser:{
         fontFamily: "VarelaRound_400Regular",
-        color: "#6c757d",
-        fontSize: 18,
-        fontWeight: 'bold'
+        color: "#fff",
+        fontSize: 15,
+        fontWeight: 'bold',
+        marginLeft: 33
     },
 
     fontVtitle:{
         fontFamily: "VarelaRound_400Regular",
-        fontSize: 15,
+        fontSize: 12,
         fontWeight: 'bold',
-        color: "#616161",
+        color: "#6c757d",
         marginTop: 20,
-        marginLeft: 30
+        marginLeft: 17
     },
 
     fontVtitle2:{
         fontFamily: "VarelaRound_400Regular",
-        fontSize: 15,
+        fontSize: 12,
         fontWeight: 'bold',
-        color: "#616161",
-        marginTop: 10,
-        marginLeft: 30
+        color: "#6c757d",
+        marginLeft: 17,
+        bottom: 70
     },
 
     descriptionTask:{

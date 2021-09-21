@@ -1,28 +1,27 @@
 import React from 'react';
 import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from '../../Bezerros/style';
 
-export default function Profile(){
+export default function PerfilVacas(){
     return(
         <View style={styles.bannerHeader}>
             <Image
                 style={styles.bgImage}
-                source={require("../../../assets/Background.jpg")}
+                source={require("../../../assets/Pasto.png")}
             />
             <View style={styles.bannerProfile}>
                 <Image 
-                    source={require("../../../assets/bezerro-faze.-Elge-640x439.jpg")}
+                    source={require("../../../assets/vaca.jpg")}
                     style={styles.profile}
                 />
-                <Text style={styles.labelProfile}>Bezerro1</Text>
+                <Text style={styles.labelProfile}>Netinha</Text>
             </View>
             <View style={styles.bannerBody}>
                 <View style={styles.bannerData}>
                     <Text style={styles.bannerLabels}>Nome</Text>
                     <TextInput
                         style={styles.bannerInputsLong}
-                        placeholder={"Bezerro1"}
+                        placeholder={"Netinha"}
                     />
                 </View>
 
@@ -41,14 +40,7 @@ export default function Profile(){
                         placeholder={"50"}
                     />
                 </View>
-
-                <View style={styles.bannerData}>
-                    <Text style={styles.bannerLabels}>Nome da mãe</Text>
-                    <TextInput
-                        style={styles.bannerInputsLong}
-                        placeholder={"Netinha"}
-                    />
-                </View>
+                
                 <View style={styles.bannerData}>
                     <Text style={styles.bannerLabels}>última Vacina aplicada</Text>
                     <TextInput
@@ -75,5 +67,5 @@ export default function Profile(){
                 </TouchableOpacity>
             </View>
         </View>
-    );
+    )
 }
